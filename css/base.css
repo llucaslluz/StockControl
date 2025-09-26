@@ -285,11 +285,10 @@ h1{
   margin-bottom: 4px;
 }
 
-}
 
 /* Arrow do submenu */
 .has-sub {
-  justify-content: space-between;
+  /*justify-content: space-between; */
   cursor: pointer;
 }
 
@@ -301,7 +300,7 @@ h1{
 .submenu {
   display: none;
   flex-direction: column;
-  padding-left: 34px; /* desloca sublinks */
+/* padding-left: 34px; /* desloca sublinks */
   margin-top: 4px;
 }
 
@@ -311,7 +310,7 @@ h1{
 
 .submenu a {
   font-size: 0.85rem;
-  padding: 5px 8px;
+  /*padding: 5px 8px; */
   color: #cbd5e1;
 }
 
