@@ -1,0 +1,234 @@
+/* ===========================
+   Dashboard Corporativo
+   =========================== */
+
+.page.dashboard-corporativo {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+/* --- Header --- */
+.page.dashboard-corporativo .page-header {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+}
+
+.page.dashboard-corporativo .page-header .page-title h1 {
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: var(--text-900);
+  margin: 0;
+}
+
+.page.dashboard-corporativo .page-header .badge {
+  margin-left: 0.5rem;
+}
+
+/* --- KPI Cards --- */
+.cards-grid.kpis {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 1rem;
+}
+
+.card.kpi {
+  background: var(--panel);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  box-shadow: 0 1px 2px rgba(0,0,0,0.05);
+}
+
+.kpi-header {
+  font-size: 0.9rem;
+  color: var(--text-700);
+  margin-bottom: 0.5rem;
+}
+
+.kpi-value {
+  font-size: 1.6rem;
+  font-weight: 700;
+  color: var(--accent);
+  margin-bottom: 0.5rem;
+}
+
+.kpi-foot {
+  font-size: 0.75rem;
+  color: var(--text-700);
+}
+
+/* --- Charts --- */
+.panels-grid.charts {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 1rem;
+}
+
+.chart-box {
+  background: var(--panel);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 1rem;
+}
+
+.chart-area {
+  height: 260px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.chart-skeleton {
+  width: 80%;
+  height: 60%;
+  background: linear-gradient(90deg, #f3f4f6 25%, #e5e7eb 50%, #f3f4f6 75%);
+  background-size: 200% 100%;
+  animation: loading 1.5s infinite;
+  border-radius: 8px;
+}
+
+@keyframes loading {
+  0% { background-position: 200% 0; }
+  100% { background-position: -200% 0; }
+}
+
+/* --- Table --- */
+.table-panel {
+  background: var(--panel);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 1rem;
+  overflow-x: auto;
+}
+
+.table-panel table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.9rem;
+}
+
+.table-panel th,
+.table-panel td {
+  padding: 0.6rem;
+  border-bottom: 1px solid var(--border);
+}
+
+.table-panel th {
+  text-align: left;
+  color: var(--text-700);
+  font-weight: 600;
+}
+
+.table-panel td {
+  color: var(--text-900);
+}
+
+.table-panel td.text-right {
+  text-align: right;
+}
+
+.table-panel td.text-center {
+  text-align: center;
+}
+
+/* --- Chips --- */
+.chip {
+  display: inline-block;
+  padding: 0.2rem 0.6rem;
+  border-radius: 999px;
+  font-size: 0.75rem;
+  background: var(--border);
+  color: var(--text-900);
+}
+
+.chip-warning {
+  background: #facc15;
+  color: #111;
+}
+
+/* --- Alerts --- */
+.alerts-panel {
+  background: var(--panel);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 1rem;
+}
+
+.alerts-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.8rem;
+}
+
+.alert-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.8rem;
+  padding: 0.6rem 0.8rem;
+  border-radius: 8px;
+  border: 1px solid var(--border);
+}
+
+.alert-icon {
+  font-weight: bold;
+  color: #fff;
+  background: var(--accent);
+  border-radius: 50%;
+  width: 22px;
+  height: 22px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.alert-warning .alert-icon {
+  background: #facc15;
+  color: #111;
+}
+
+.alert-danger .alert-icon {
+  background: #ef4444;
+}
+
+.alert-content {
+  flex: 1;
+  font-size: 0.9rem;
+  color: var(--text-900);
+}
+
+.alert-content small {
+  display: block;
+  font-size: 0.75rem;
+  color: var(--text-700);
+}
+
+/* HOTFIX: evita conflito com o .badge da topbar */
+.page.dashboard-corporativo .page-header .badge-info {
+  position: static !important;
+  inset: auto !important;
+  transform: none !important;
+  background: var(--accent) !important;
+  color: var(--text-light) !important;
+  border-radius: 999px !important;
+  padding: 0.2rem 0.6rem !important;
+  font-size: 0.75rem !important;
+  font-weight: 600 !important;
+  box-shadow: none !important;
+}
+.page.dashboard-corporativo .page-header .badge-info::before,
+.page.dashboard-corporativo .page-header .badge-info::after { display: none !important; }
+
+/* Canvas dos gráficos ocupa o espaço da área */
+.chart-area canvas {
+  width: 100% !important;
+  height: 240px !important;
+  display: block;
+}
+
