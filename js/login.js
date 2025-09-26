@@ -1,25 +1,34 @@
+// 🔹 Usuários simulados
+const usuarios = [
+  { email: "Lucas", senha: "1234", perfil: "GESTOR_LOCAL" },
+  { email: "Fagner", senha: "1234", perfil: "GESTOR_MASTER" }
+];
+
 const form = document.getElementById("login-form");
-const togglePassword = document.getElementById("togglePassword");
-const passwordField = document.getElementById("password");
 
-// Mostrar/ocultar senha
-togglePassword.addEventListener("change", () => {
-  passwordField.type = togglePassword.checked ? "text" : "password";
-});
-
-// Simulação de login
 form.addEventListener("submit", function(e) {
   e.preventDefault();
 
-  const email = document.getElementById("email").value.trim();
-  const password = passwordField.value.trim();
+  const user = document.getElementById("user").value.trim();
+  const password = document.getElementById("password").value.trim();
 
-  if(email === "" || password === "") {
+  if(user === "" || password === "") {
     alert("Por favor, preencha todos os campos.");
     return;
   }
 
-  console.log("Login enviado:", { email, password });
-  alert("Login realizado com sucesso!");
-  window.location.href = "/pages/dashboard/unidade.html";
+  // Procura usuário simulado
+  const usuario = usuarios.find(u => u.email === user && u.senha === password);
+
+  if(!usuario) {
+    alert("Credenciais inválidas");
+    return;
+  }
+
+  // Redireciona de acordo com o perfil
+  if(usuario.perfil === "GESTOR_LOCAL") {
+    window.location.href = "/pages/dashboard/unidade.html";
+  } else if(usuario.perfil === "GESTOR_MASTER") {
+    window.location.href = "/pages/dashboard/corporativo.html";
+  }
 });
