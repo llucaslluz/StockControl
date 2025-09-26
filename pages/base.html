@@ -1,63 +1,205 @@
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
-  <meta charset="UTF-8"/>
+  <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Stock Control</title>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
   <link rel="stylesheet" href="/css/base.css"/>
 </head>
 <body>
   <div class="layout">
 
     <!-- Sidebar -->
-    <aside class="sidebar">
-      <div class="logo">📦 Stock Control</div>
-      <nav>
-        <ul>
-          <li><a href="#" class="active"><span class="icon">🏠</span> Dashboard</a></li>
-          <li><a href="#"><span class="icon">📑</span> Notas Fiscais</a></li>
-          <li><a href="#"><span class="icon">📦</span> Estoque</a></li>
-          <li><a href="#"><span class="icon">📤</span> Saídas</a></li>
-          <li><a href="#"><span class="icon">📝</span> Requisições</a></li>
-          <li><a href="#"><span class="icon">📊</span> Inventário</a></li>
-          <li><a href="#"><span class="icon">📈</span> Relatórios</a></li>
-          <li><a href="#"><span class="icon">📉</span> Estatísticas</a></li>
-          <li><a href="#"><span class="icon">⚠️</span> Alertas</a></li>
-          <li><a href="#"><span class="icon">⚙️</span> Cadastros</a></li>
-          <li><a href="#"><span class="icon">🔧</span> Admin</a></li>
-        </ul>
-      </nav>
-    </aside>
-
-    <!-- Área principal -->
-    <main class="main">
-
-      <!-- Topbar -->
-      <header class="topbar">
-        <div class="selectors">
-          <select>
-            <option>Cliente</option>
-          </select>
-          <select>
-            <option>Unidade</option>
-          </select>
-        </div>
-        <div class="user-menu">
-          <span class="icon">🔔</span>
-          <span class="icon">❔</span>
-          <span class="user">Lucas ▾</span>
-        </div>
-      </header>
-
-      <!-- Conteúdo dinâmico -->
-      <section class="content">
-        <h1>Lista de NFs</h1>
-        <div class="card">
-          <p>Conteúdo da tela aqui (tabelas, gráficos, formulários...)</p>
-        </div>
-      </section>
-
-    </main>
+<aside class="sidebar">
+  <!-- Logo fixa -->
+  <div class="logo-area">
+    <img src="/assents/images/stock-control-logo.png" alt="Stock Control" class="logo-img">
   </div>
+
+  <!-- Links com scroll -->
+  <div class="menu-wrapper">
+    <nav class="menu">
+      <ul>
+        <li>
+          <a href="/pages/dashboard.html"><span class="icon">🏠</span> <span class="label">Dashboard</span></a>
+        </li>
+
+        <li>
+          <a href="#" class="has-sub"><span class="icon">📑</span> <span class="label">Notas Fiscais</span></a>
+          <ul class="submenu">
+            <li><a href="/pages/notas/lista.html">Lista</a></li>
+            <li><a href="/pages/notas/nova.html">Nova</a></li>
+            <li><a href="/pages/notas/detalhe.html">Detalhe</a></li>
+          </ul>
+        </li>
+
+        <li>
+          <a href="#" class="has-sub"><span class="icon">📦</span> <span class="label">Estoque</span></a>
+          <ul class="submenu">
+            <li><a href="/pages/estoque/saldos.html">Saldos</a></li>
+            <li><a href="/pages/estoque/lotes.html">Lotes / Séries</a></li>
+            <li><a href="/pages/estoque/movimentacoes.html">Movimentações</a></li>
+          </ul>
+        </li>
+
+        <li>
+          <a href="#" class="has-sub"><span class="icon">📤</span> <span class="label">Saídas</span></a>
+          <ul class="submenu">
+            <li><a href="/pages/saidas/registrar.html">Registrar</a></li>
+            <li><a href="/pages/saidas/historico.html">Histórico</a></li>
+          </ul>
+        </li>
+
+        <li>
+          <a href="#" class="has-sub"><span class="icon">📝</span> <span class="label">Requisições</span></a>
+          <ul class="submenu">
+            <li><a href="/pages/requisicoes/nova.html">Nova</a></li>
+            <li><a href="/pages/requisicoes/lista.html">Lista / Aprovação</a></li>
+            <li><a href="/pages/requisicoes/detalhe.html">Detalhe</a></li>
+          </ul>
+        </li>
+
+        <li>
+          <a href="#" class="has-sub"><span class="icon">📊</span> <span class="label">Inventário</span></a>
+          <ul class="submenu">
+            <li><a href="/pages/inventario/planos.html">Planos</a></li>
+            <li><a href="/pages/inventario/contagens.html">Contagens</a></li>
+            <li><a href="/pages/inventario/ajustes.html">Ajustes</a></li>
+          </ul>
+        </li>
+
+        <li>
+          <a href="#" class="has-sub"><span class="icon">📈</span> <span class="label">Relatórios</span></a>
+          <ul class="submenu">
+            <li><a href="/pages/relatorios/estoque.html">Estoque</a></li>
+            <li><a href="/pages/relatorios/movimentacoes.html">Movimentações</a></li>
+            <li><a href="/pages/relatorios/consumo.html">Consumo</a></li>
+            <li><a href="/pages/relatorios/evolucao.html">Evolução de Preços</a></li>
+            <li><a href="/pages/relatorios/epis.html">Conformidade EPIs</a></li>
+          </ul>
+        </li>
+
+        <li>
+          <a href="#" class="has-sub"><span class="icon">📉</span> <span class="label">Estatísticas</span></a>
+          <ul class="submenu">
+            <li><a href="/pages/estatisticas/graficos.html">Gráficos</a></li>
+            <li><a href="/pages/estatisticas/tabelas.html">Tabelas Detalhadas</a></li>
+            <li><a href="/pages/estatisticas/exportacoes.html">Exportações</a></li>
+          </ul>
+        </li>
+
+        <li>
+          <a href="/pages/alertas/painel.html"><span class="icon">⚠️</span> <span class="label">Alertas</span></a>
+        </li>
+
+        <li>
+          <a href="#" class="has-sub"><span class="icon">⚙️</span> <span class="label">Cadastros</span></a>
+          <ul class="submenu">
+            <li><a href="/pages/cadastros/materiais.html">Materiais</a></li>
+            <li><a href="/pages/cadastros/categorias.html">Categorias</a></li>
+            <li><a href="/pages/cadastros/uom.html">UoM</a></li>
+            <li><a href="/pages/cadastros/fornecedores.html">Fornecedores</a></li>
+            <li><a href="/pages/cadastros/funcionarios.html">Funcionários</a></li>
+            <li><a href="/pages/cadastros/almoxarifados.html">Almoxarifados</a></li>
+            <li><a href="/pages/cadastros/localizacoes.html">Localizações</a></li>
+            <li><a href="/pages/cadastros/usuarios.html">Usuários / Perfis</a></li>
+          </ul>
+        </li>
+
+        <li>
+          <a href="/pages/admin/config.html"><span class="icon">🔧</span> <span class="label">Admin</span></a>
+        </li>
+      </ul>
+    </nav>
+  </div>
+</aside>
+
+
+<!-- Topbar -->
+<header class="topbar">
+  <div class="left">
+    <div class="selectors">
+      <label>
+        <span>Cliente</span>
+        <select aria-label="Cliente">
+          <option>Cliente</option>
+        </select>
+      </label>
+      <label>
+        <span>Unidade</span>
+        <select aria-label="Unidade">
+          <option>Unidade</option>
+        </select>
+      </label>
+    </div>
+  </div>
+
+  <div class="right user-menu">
+    <!-- Notificações -->
+<div class="dropdown-wrapper">
+  <button class="icon-btn" id="notif-btn" title="Notificações">
+    <i class="fa-solid fa-bell"></i>
+    <span class="badge" id="notif-badge">3</span>
+  </button>
+  <div class="dropdown" id="notif-dropdown">
+    <ul>
+      <li><a href="#">NF 00123 pendente</a></li>
+      <li><a href="#">Estoque mínimo atingido</a></li>
+      <li><a href="#">Nova requisição aguardando</a></li>
+      <li><a href="/pages/notificacoes.html">Ver todas</a></li>
+    </ul>
+  </div>
+</div>
+
+
+    <!-- Ajuda -->
+    <div class="dropdown-wrapper">
+      <button class="icon-btn" id="help-btn" title="Ajuda">
+        <i class="fa-regular fa-circle-question"></i>
+      </button>
+      <div class="dropdown" id="help-dropdown">
+        <ul>
+          <li><a href="/pages/ajuda/faq.html">FAQ</a></li>
+          <li><a href="/pages/ajuda/manual.html">Manual do Usuário</a></li>
+          <li><a href="/pages/ajuda/suporte.html">Suporte</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Usuário -->
+    <div class="dropdown-wrapper">
+      <button class="icon-btn" id="user-btn" title="Perfil">
+        <i class="fa-solid fa-user"></i>
+      </button>
+      <div class="dropdown" id="user-dropdown">
+        <ul>
+          <li><a href="/pages/perfil.html">Meu Perfil</a></li>
+          <li><a href="/pages/configuracoes.html">Configurações</a></li>
+          <li><a href="/logout.html">Sair</a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</header>
+
+
+
+    <!-- Conteúdo -->
+    <main class="content">
+      <h1>Título da Tela</h1>
+      <div class="toolbar">
+        <button class="btn btn-primary">Ação Primária</button>
+        <button class="btn">Ação Secundária</button>
+      </div>
+      <div class="card">
+        <p>Coloque aqui os cards / tabelas / gráficos / formulários da página.</p>
+      </div>
+    </main>
+
+  </div>
+  <script src="/js/base.js"></script>
 </body>
 </html>
