@@ -27,6 +27,7 @@ Permite controle operacional em nível de unidade e visão estratégica corporat
 - 📈 Relatórios e Estatísticas.
 - 🏷️ Cadastros (materiais, categorias, UoM, fornecedores, funcionários, almoxarifados, localizações, usuários).
 - ⚙️ Administração (configurações e políticas).
+- 📤 Exportações (Excel, CSV, PDF em todas as listas e relatórios).
 
 ---
 
@@ -87,7 +88,8 @@ Permite controle operacional em nível de unidade e visão estratégica corporat
 - EPIs possuem **validade e conformidade obrigatória** por funcionário.
 - Inventário gera **ajustes apenas após aprovação do gestor**.
 - Alertas têm ciclo: **Aberto → Reconhecido → Resolvido**.
-- Permissões seguem o **RBAC** (Role Based Access Control).
+- Exclusões devem usar **soft delete**, preservando histórico/auditoria.
+- Saídas devem registrar **dupla responsabilidade**: quem **entregou** (almox) e quem **recebeu** (funcionário ou setor/projeto).
 
 ---
 
@@ -106,10 +108,11 @@ Permite controle operacional em nível de unidade e visão estratégica corporat
 - **Notas Fiscais** (id, fornecedor, valor, status).
 - **Itens NF** (id, nf, material, quantidade, preço).
 - **Movimentações** (id, tipo, data, material, qtd, usuário).
-- **Requisições** (id, solicitante, status, unidade).
+- **Requisições** (id, solicitante, status, unidade, setor/projeto destino).
 - **Itens Requisição** (id, requisição, material, qtd).
 - **Inventário** (planos, contagens, ajustes).
 - **Alertas** (id, tipo, status, entidade).
+- **Setores/Projetos** (id, nome, unidade) → destino de saídas/requisições.
 
 ### Tabela de Entidades
 
@@ -125,12 +128,16 @@ Permite controle operacional em nível de unidade e visão estratégica corporat
 | Usuários      | id, email, perfil, funcionário      | Controle de acesso                  |
 | NFs           | id, fornecedor, valor, status       | Compras e recebimentos              |
 | Movimentações | id, tipo, data, material, qtd       | Entradas/saídas/ajustes             |
-| Requisições   | id, solicitante, status, unidade    | Fluxo de pedidos internos           |
+| Requisições   | id, solicitante, status, unidade, setor/projeto | Fluxo de pedidos internos  |
 | Inventário    | id, plano, status, unidade          | Contagem de estoques                |
 | Alertas       | id, tipo, status, entidade          | Monitoramento crítico                |
+| Setores/Projetos | id, nome, unidade                | Agrupar saídas/requisições coletivas |
 
 ---
 
 ## 🔄 Fluxos Resumidos (ASCII)
 
 ### Fluxo: Abertura de Requisição
+```text
+[FUNC] → Cria Requisição → [GESTOR_LOCAL] → Aprova/Reprova
+   → [ALMOX] → Atende (parcial/total) → Status Concluído
