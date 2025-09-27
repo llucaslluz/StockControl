@@ -1,0 +1,138 @@
+/* ==============================
+   Cabeçalho da página
+============================== */
+.page-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 15px;
+}
+
+.page-header h1 {
+  font-size: 1.5rem;
+  color: #1e293b;
+}
+
+.actions button {
+  margin-left: 10px;
+}
+
+/* ==============================
+   Cards (container padrão)
+============================== */
+.card {
+  background: var(--panel);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 18px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+  margin-bottom: 20px;
+}
+
+/* ==============================
+   Filtros
+============================== */
+.filtros {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+/* Cada linha de filtros organizada em grid responsivo */
+.linha-filtros {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 15px;
+  align-items: end;
+}
+
+.filtros label {
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: #374151;
+  display: flex;
+  flex-direction: column;
+}
+
+.filtros input,
+.filtros select {
+  padding: 8px;
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  font-size: 0.9rem;
+  margin-top: 5px;
+}
+
+/* Campo de período com inputs lado a lado */
+.periodo {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+.periodo input {
+  flex: 1;
+}
+
+/* ==============================
+   Botão Aplicar Filtros
+============================== */
+#btn-aplicar-filtros {
+  background: var(--accent);
+  color: #fff;
+  font-weight: 600;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background 0.2s var(--ease), transform 0.1s ease-in-out;
+  width: 100%;              /* ocupa a largura do grid em telas menores */
+  max-width: 180px;         /* mas não fica exagerado em telas grandes */
+}
+
+#btn-aplicar-filtros:hover {
+  background: #2563eb;       /* azul mais forte no hover */
+}
+
+#btn-aplicar-filtros:active {
+  transform: translateY(1px); /* efeito de clique */
+}
+
+/* ==============================
+   Tabela
+============================== */
+.tabela-container {
+  overflow: auto;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+th, td {
+  border-bottom: 1px solid var(--border);
+  padding: 10px;
+  text-align: left;
+}
+
+th {
+  background: #f3f4f6;
+}
+
+tr:hover {
+  background: #f9fafb;
+  cursor: pointer;
+}
+
+/* ==============================
+   Detalhes
+============================== */
+.detalhe p {
+  margin-bottom: 6px;
+  font-size: 0.9rem;
+  color: #374151;
+}
+
+.hidden {
+  display: none;
+}
