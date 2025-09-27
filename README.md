@@ -1,99 +1,136 @@
-Stock Control (Levantamento - 2)
+# 📦 Stock Control
 
-📦 Projeto – Sistema de Controle de Materiais
-🎯 Objetivo
+## 🔎 Visão Geral
+O **Stock Control** é um sistema de gestão de estoques, notas fiscais, EPIs e processos de almoxarifado para empresas multiunidade.  
+Permite controle operacional em nível de unidade e visão estratégica corporativa, com dashboards, relatórios e gestão de cadastros.
 
-Controlar de ponta a ponta os materiais de uma empresa prestadora de serviços (como Manserv → Voith, Braskem, Petrobras etc.), garantindo rastreabilidade de compras, estoque, saídas, validade de EPIs, fornecedores e consumo por funcionário/unidade.
-O sistema deve fornecer dados estratégicos para gestão: quando comprar, quanto gastar, quem está usando, e histórico de valores.
+---
 
-🗂️ Estrutura por Módulos
-1. Cadastro
-Materiais:
-Nome, categoria (EPI, EPC, uniforme, ferramentas, equipamentos etc).
-Unidade de medida (unidade, caixa, par, litro).
-Código interno.
-Estoque mínimo e máximo configurável.
-Validade (se aplicável).
-Categorias de Materiais.
-Fornecedores:
-Nome, CNPJ, contato, e-mail, telefone.
-Histórico de fornecimento.
-Funcionários:
-Nome, matrícula, unidade, função.
-Histórico de EPIs entregues.
-Clientes e Unidades:
-Estrutura hierárquica: Cliente > Unidade > Estoque.
+## 🎯 Objetivo do Sistema
+- Garantir **rastreabilidade de materiais** (entrada, saída, validade, lote/série).
+- Automatizar fluxos de **requisições, aprovações e inventários**.
+- Apoiar **conformidade legal** (EPIs, NFes, auditoria).
+- Oferecer **visão analítica corporativa** (custos, consumo, divergências).
+- Reduzir desperdícios e melhorar a **eficiência de suprimentos**.
 
-2. Entrada de Materiais (Compras/Notas Fiscais)
-Cadastro da NF: número, fornecedor, data, valor total.
-Registro de itens: nome, quantidade comprada, quantidade recebida, preço unitário.
-Controle de entregas parciais (registrar faltas).
-Histórico de preços unitários.
-Importação futura via XML da SEFAZ.
+---
 
-3. Estoque
-Saldo atualizado automaticamente após entradas e saídas.
-Alerta de estoque mínimo/máximo.
-Localização do material (almoxarifado, prateleira, setor).
-Histórico completo de movimentações (com auditoria de quem fez).
-Controle de validade → alerta de vencimento.
+## 📌 Escopo Principal (Funcionalidades)
+- 🔐 Autenticação e perfis de acesso.
+- 📊 Dashboards (Unidade e Corporativo).
+- 📦 Gestão de Notas Fiscais (lista, cadastro, recebimento).
+- 📊 Estoque (saldos, lotes, movimentações).
+- 📤 Saídas (registro e histórico).
+- 📑 Requisições (fluxo completo).
+- 📋 Inventário (planos, contagens, ajustes).
+- ⚠️ Painel de Alertas.
+- 📈 Relatórios e Estatísticas.
+- 🏷️ Cadastros (materiais, categorias, UoM, fornecedores, funcionários, almoxarifados, localizações, usuários).
+- ⚙️ Administração (configurações e políticas).
 
-4. Saída de Materiais
-Registro de entrega a funcionário ou setor.
-Controle de EPIs:
-Data de retirada, data prevista de troca.
-Alerta quando vencido.
-Responsabilidade dupla: quem entregou e quem recebeu.
-Assinatura digital (ou login/senha de confirmação).
+---
 
-5. Requisição de Materiais
-Funcionário solicita material pelo sistema.
-Fluxo de aprovação (gestor local aprova → almoxarife entrega).
-Evita saídas sem controle.
+## 👥 Perfis de Usuário
+- **FUNC** → Funcionário comum (requisitar materiais, consultar EPIs).
+- **ALMOX** → Almoxarife (gerir NFs, entradas/saídas, inventário).
+- **GESTOR_LOCAL** → Gestor da unidade (aprovar requisições, ver relatórios locais).
+- **GESTOR_MASTER** → Gestor corporativo (visão consolidada multiunidade).
+- **VISITANTE (futuro)** → Acesso restrito a dashboards de leitura.
 
-6. Relatórios e Dashboards
-Relatórios básicos:
-Estoque atual.
-Histórico de movimentações.
-Consumo por funcionário/unidade.
-Dashboards avançados:
-Consumo médio mensal por material.
-Top 10 materiais mais usados.
-Top 10 funcionários que mais retiraram EPIs.
-Custo total por categoria.
-Evolução de preços ao longo do tempo.
-Comparativo entre unidades/clientes.
+---
 
-7. Multiunidade e Multiempresa
-Cada cliente possui suas unidades.
-Gestor local enxerga apenas sua unidade.
-Gestor master enxerga todas as unidades e clientes.
+## 🖥️ Especificação Funcional
 
-8. Alertas Automáticos
-Materiais vencendo em X dias.
-Estoque abaixo do mínimo ou acima do máximo.
-Funcionário com EPI vencido.
-Diferença entre quantidade comprada e recebida de NF.
+### Telas Principais
+- **Login / Recuperar senha** → autenticação segura.
+- **Dashboard da Unidade** → visão operacional local.
+- **Dashboard Corporativo** → visão estratégica consolidada.
+- **Notas Fiscais** → lista, cadastro e detalhe/recebimento.
+- **Estoque** → saldos, lotes/séries, movimentações.
+- **Saídas** → registrar e consultar histórico.
+- **Requisições** → solicitação, aprovação e atendimento.
+- **Inventário** → planos, contagens e ajustes.
+- **Alertas** → monitoramento central.
+- **Relatórios / Estatísticas** → consultas, KPIs e gráficos.
+- **Cadastros** → materiais, categorias, UoM, fornecedores, funcionários, almoxarifados, localizações, usuários.
+- **Admin** → configurações do sistema.
 
-9. Segurança e Auditoria
-Log completo de operações: quem cadastrou, alterou, entregou, excluiu.
-Histórico de exclusões (soft delete).
+---
 
-10. Exportação e Integração
-Exportação de relatórios para Excel e PDF.
-API futura para integração com sistemas ERP ou XML de NF.
+## 📋 Tabela de Telas
 
-👥 Perfis de Usuário
-Funcionário comum:
-Solicita materiais.
-Consulta histórico do que recebeu.
-Almoxarife / Responsável:
-Registra entradas (NF).
-Registra saídas.
-Garante atualização de estoque.
-Gestor Local (Unidade):
-Aprova requisições.
-Acompanha estoque e relatórios da unidade.
-Gestor Master (Corporativo):
-Acesso consolidado a todas as unidades/clientes.
-Relatórios estratégicos de custo, consumo e comparação.
+| Tela                         | Objetivo                                          | Perfis com Acesso |
+|------------------------------|---------------------------------------------------|-------------------|
+| Login / Recuperar Senha      | Acesso ao sistema                                 | Todos             |
+| Dashboard Unidade            | Indicadores operacionais locais                   | ALMOX, GESTOR_LOCAL |
+| Dashboard Corporativo        | KPIs e visão consolidada                          | GESTOR_MASTER     |
+| Lista de Notas Fiscais       | Controle de NFs recebidas                         | ALMOX, GESTOR_LOCAL |
+| Nova NF                      | Cadastro de NFs                                   | ALMOX             |
+| Detalhe da NF                | Recebimento e fechamento                          | ALMOX             |
+| Estoque - Saldos             | Consultar saldos e status (min/máx)               | Todos (restrito)  |
+| Estoque - Lotes/Séries       | Rastreabilidade por lote/validade                 | ALMOX, GESTOR_LOCAL |
+| Estoque - Movimentações      | Auditoria de entradas/saídas                      | ALMOX, GESTOR_LOCAL, GESTOR_MASTER |
+| Registrar Saída              | Registrar entrega de materiais/EPIs               | ALMOX             |
+| Histórico de Saídas          | Consultar entregas anteriores                     | ALMOX, GESTOR_LOCAL |
+| Requisições (Nova/Lista/Det.)| Fluxo de solicitação, aprovação e atendimento     | FUNC, GESTOR_LOCAL, ALMOX |
+| Inventário (Planos/Cont/Ajuste)| Contagem e ajuste de estoque                    | ALMOX, GESTOR_LOCAL |
+| Painel de Alertas            | Acompanhar e resolver alertas                     | Todos (restrito)  |
+| Relatórios/Estatísticas      | KPIs, consumo, conformidade EPIs                  | GESTOR_LOCAL, GESTOR_MASTER |
+| Cadastros (Materiais, etc.)  | Base do sistema                                   | ALMOX, GESTOR_LOCAL, GESTOR_MASTER |
+| Configurações/Administração  | Políticas, permissões e integrações               | GESTOR_MASTER     |
+
+---
+
+## 📜 Regras de Negócio
+- Chamados (Requisições) seguem fluxo: **Pendente → Aprovada → Atendida/Parcial → Concluída**.
+- NF só pode ser **fechada** quando todos os itens forem recebidos.
+- EPIs possuem **validade e conformidade obrigatória** por funcionário.
+- Inventário gera **ajustes apenas após aprovação do gestor**.
+- Alertas têm ciclo: **Aberto → Reconhecido → Resolvido**.
+- Permissões seguem o **RBAC** (Role Based Access Control).
+
+---
+
+## 🗂️ Modelo de Dados (MER Simplificado)
+
+### Entidades Principais
+- **Clientes** (id, nome, CNPJ, logo).
+- **Unidades** (id, nome, cliente, endereço).
+- **Almoxarifados** (id, nome, unidade).
+- **Localizações** (id, código, almox).
+- **Materiais** (id, nome, SKU, categoria, min/máx).
+- **Categorias** (id, nome, categoria_pai).
+- **Fornecedores** (id, nome, CNPJ).
+- **Funcionários** (id, nome, matrícula, unidade).
+- **Usuários** (id, email, perfil, funcionário vinculado).
+- **Notas Fiscais** (id, fornecedor, valor, status).
+- **Itens NF** (id, nf, material, quantidade, preço).
+- **Movimentações** (id, tipo, data, material, qtd, usuário).
+- **Requisições** (id, solicitante, status, unidade).
+- **Itens Requisição** (id, requisição, material, qtd).
+- **Inventário** (planos, contagens, ajustes).
+- **Alertas** (id, tipo, status, entidade).
+
+### Tabela de Entidades
+
+| Entidade      | Atributos Principais                | Finalidade                          |
+|---------------|-------------------------------------|-------------------------------------|
+| Clientes      | id, nome, CNPJ, logo                | Empresas atendidas                  |
+| Unidades      | id, nome, cliente, endereço         | Sites/unidades da empresa           |
+| Almoxarifados | id, nome, unidade                   | Estoque físico                      |
+| Localizações  | id, código, almox                   | Endereços físicos                   |
+| Materiais     | id, nome, SKU, categoria, min/máx   | Itens controlados                   |
+| Fornecedores  | id, nome, CNPJ                      | Base de compras                     |
+| Funcionários  | id, nome, matrícula, unidade        | Pessoas que usam EPIs/materiais     |
+| Usuários      | id, email, perfil, funcionário      | Controle de acesso                  |
+| NFs           | id, fornecedor, valor, status       | Compras e recebimentos              |
+| Movimentações | id, tipo, data, material, qtd       | Entradas/saídas/ajustes             |
+| Requisições   | id, solicitante, status, unidade    | Fluxo de pedidos internos           |
+| Inventário    | id, plano, status, unidade          | Contagem de estoques                |
+| Alertas       | id, tipo, status, entidade          | Monitoramento crítico                |
+
+---
+
+## 🔄 Fluxos Resumidos (ASCII)
+
+### Fluxo: Abertura de Requisição
