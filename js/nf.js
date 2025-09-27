@@ -60,3 +60,57 @@ document.getElementById("btn-nova").addEventListener("click", () => {
 
 // Render inicial
 renderTabela(notas);
+
+// ------------------ NOVA NF ------------------
+const tabelaItens = document.getElementById("tabela-itens")?.querySelector("tbody");
+let contador = 1;
+
+function addItem(material="", qtd="", preco="") {
+  if(!tabelaItens) return;
+  const tr = document.createElement("tr");
+  tr.innerHTML = `
+    <td>${contador++}</td>
+    <td><input type="text" value="${material}" placeholder="Material"/></td>
+    <td><input type="number" value="${qtd}" placeholder="0"/></td>
+    <td><input type="number" value="${preco}" placeholder="0,00"/></td>
+    <td><button class="btn-secondary" onclick="this.closest('tr').remove()">Excluir</button></td>
+  `;
+  tabelaItens.appendChild(tr);
+}
+
+document.getElementById("btn-add-item")?.addEventListener("click", () => addItem());
+
+// Salvar / Cancelar
+document.getElementById("btn-salvar")?.addEventListener("click", () => {
+  alert("NF salva com sucesso (mock).");
+  window.location.href = "lista.html";
+});
+
+document.getElementById("btn-cancelar")?.addEventListener("click", () => {
+  if(confirm("Cancelar cadastro e voltar para lista?")) {
+    window.location.href = "lista.html";
+  }
+});
+
+// ------------------ DETALHE NF ------------------
+function abrirRecebimento(material) {
+  document.getElementById("recebimento").classList.remove("hidden");
+  alert("Recebimento aberto para " + material);
+}
+
+function abrirHistorico(material) {
+  document.getElementById("historico").classList.remove("hidden");
+  const tabela = document.getElementById("tabela-historico");
+  tabela.innerHTML = `
+    <tr><td>05/03/25</td><td>Lucas (ALM)</td><td>50</td><td>Almox 01/R01</td></tr>
+    <tr><td>06/03/25</td><td>João (ALM)</td><td>30</td><td>Almox 01/R02</td></tr>
+  `;
+}
+
+// Simulação de recebimento
+document.getElementById("form-recebimento")?.addEventListener("submit", e => {
+  e.preventDefault();
+  const qtd = document.getElementById("qtd-receber").value;
+  alert("Recebimento confirmado: " + qtd + " unidades.");
+  document.getElementById("recebimento").classList.add("hidden");
+});
