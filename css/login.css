@@ -120,3 +120,10 @@ footer {
   font-size: 0.8rem;
   color: #fff;
 }
+
+.logo-img {
+  max-width: 300px;   /* controla o tamanho */
+  height: auto;
+  margin-bottom: 8px;
+}
+
