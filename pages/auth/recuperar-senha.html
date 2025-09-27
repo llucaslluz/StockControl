@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Recuperar Senha - Stock Control</title>
+  <!-- Usa o MESMO CSS da tela de login para manter padrão -->
+  <link rel="stylesheet" href="/css/login.css"/>
+  <link rel="icon" href="/assents/images/stock-control-www.png" type="image/png">
+</head>
+<body>
+  <div class="login-container">
+    <div class="login-box">
+      <img src="/assents/images/stock-control-logo.png" alt="Stock Control" class="logo-img" />
+
+      <h2 class="title">Recuperar Senha</h2>
+
+      <form id="recuperar-form">
+        <label for="email">Digite seu e-mail cadastrado</label>
+        <input type="email" id="email" name="email" placeholder="exemplo@email.com" required />
+
+        <button type="submit" class="btn-primary">Enviar Link de Redefinição</button>
+        <!-- Caminho relativo para voltar ao login -->
+        <a href="login.html" class="forgot">Voltar ao Login</a>
+      </form>
+    </div>
+
+    <footer>© 2025 Stock Control - Todos os direitos reservados</footer>
+  </div>
+
+  <script src="/js/recuperar-senha.js"></script>
+</body>
+</html>
