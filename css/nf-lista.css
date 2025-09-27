@@ -1,0 +1,107 @@
+/* NÃO redefina o body — o base.css já cuida disso */
+.content {
+  padding: 20px; /* aplica espaçamento só dentro do conteúdo */
+  background: #f9fafb;
+  min-height: calc(100vh - 60px); /* ocupa altura da tela, menos a topbar */
+}
+
+.page-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 15px;
+}
+
+
+.page-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 15px;
+}
+
+.page-header h1 {
+  font-size: 1.5rem;
+  color: #1e293b;
+}
+
+.actions button {
+  margin-left: 10px;
+}
+
+.btn-primary {
+  background: #3b82f6;
+  color: #fff;
+  border: none;
+  padding: 8px 16px;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.btn-secondary {
+  background: #e5e7eb;
+  color: #374151;
+  border: none;
+  padding: 8px 16px;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.filtros {
+  background: #fff;
+  padding: 15px;
+  border-radius: 8px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+  margin-bottom: 15px;
+}
+
+.filtros.hidden {
+  display: none;
+}
+
+.tabela-container {
+  background: #fff;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+th, td {
+  padding: 10px;
+  text-align: left;
+  border-bottom: 1px solid #e5e7eb;
+}
+
+th {
+  background: #f3f4f6;
+}
+
+.status {
+  font-weight: bold;
+  padding: 4px 8px;
+  border-radius: 6px;
+}
+
+.status.Aberta { color: #2563eb; }
+.status.Parcial { color: #d97706; }
+.status.Concluída { color: #059669; }
+.status.Cancelada { color: #6b7280; }
+.status.Divergente { color: #dc2626; }
+
+.paginacao {
+  margin-top: 12px;
+  text-align: center;
+}
+
+.paginacao button {
+  margin: 0 4px;
+  padding: 5px 10px;
+  border: 1px solid #d1d5db;
+  background: #fff;
+  cursor: pointer;
+}
