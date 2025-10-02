@@ -1,0 +1,77 @@
+.page-header {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-bottom: 15px;
+}
+.page-header h1 {
+  font-size: 1.5rem;
+  color: #1e293b;
+}
+.status-info {
+  display: flex;
+  gap: 20px;
+  font-size: 0.95rem;
+  color: #374151;
+}
+
+.card {
+  background: var(--panel);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 18px;
+  box-shadow: 0 2px 6px rgba(0,0,0,.05);
+  margin-bottom: 20px;
+}
+
+/* Filtros */
+.filtros .linha-filtros {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 15px;
+  align-items: end;
+}
+.filtros label {
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: #374151;
+  display: flex;
+  flex-direction: column;
+}
+.filtros input, .filtros select {
+  padding: 8px;
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  font-size: 0.9rem;
+  margin-top: 5px;
+}
+.aplicar {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+}
+
+/* Tabela */
+.tabela-container { overflow: auto; }
+table { width: 100%; border-collapse: collapse; }
+th, td {
+  border-bottom: 1px solid var(--border);
+  padding: 10px;
+  text-align: left;
+}
+th { background: #f3f4f6; }
+
+tr:hover { background: #f9fafb; cursor: pointer; }
+
+/* Status */
+.status { font-weight: 700; }
+.status.OK { color: #059669; }
+.status.Pendente { color: #d97706; }
+.status.NaoContado { color: #6b7280; }
+
+/* Ações rápidas */
+.acoes-rapidas {
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+}

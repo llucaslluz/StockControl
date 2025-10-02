@@ -9,7 +9,7 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
   <link rel="icon" href="/assents/images/stock-control-www.png" type="image/png">
   <link rel="stylesheet" href="/css/base.css"/>
-  <link rel="stylesheet" href="/css/relatorios-mov.css"/>
+  <link rel="stylesheet" href="/css/relatorios-evolucao.css"/>
 </head>
 <body>
   <div class="layout">
@@ -189,107 +189,87 @@
 
 
     <!-- Conteúdo -->
-<main class="content">
-  <header class="page-header">
-    <h1>Relatórios - Movimentações</h1>
-  </header>
-
-  <!-- Filtros -->
-  <section class="card filtros">
-    <div class="linha-filtros">
-      <label>Cliente:
-        <select id="filtro-cliente">
-          <option value="">Todos</option>
-          <option>Cliente 1</option>
-          <option>Cliente 2</option>
-        </select>
-      </label>
-      <label>Unidade:
-        <select id="filtro-unidade">
-          <option value="">Todas</option>
-          <option>Unidade 1</option>
-          <option>Unidade 2</option>
-        </select>
-      </label>
-      <label>Almoxarifado:
-        <select id="filtro-almox">
-          <option value="">Todos</option>
-          <option>Almox 1</option>
-          <option>Almox 2</option>
-        </select>
-      </label>
-      <label>Tipo:
-        <select id="filtro-tipo">
-          <option value="">Todos</option>
-          <option value="IN">IN (Entrada)</option>
-          <option value="OUT">OUT (Saída)</option>
-          <option value="AJUSTE">Ajuste</option>
-        </select>
-      </label>
-    </div>
-
-    <div class="linha-filtros">
-      <label>Material:
-        <input type="text" id="filtro-material" placeholder="Buscar material..."/>
-      </label>
-      <label>Funcionário:
-        <input type="text" id="filtro-funcionario" placeholder="Nome do funcionário..."/>
-      </label>
-      <label>Período:
-        <div class="periodo">
-          <input type="date" id="filtro-inicio"/> 
-          <span>a</span> 
-          <input type="date" id="filtro-fim"/>
+ <main class="content">
+      <header class="page-header">
+        <h1>Relatórios - Evolução de Preços</h1>
+        <div class="actions">
+          <button class="btn-secondary">Exportar CSV</button>
+          <button class="btn-secondary">Exportar XLSX</button>
+          <button class="btn-secondary">Exportar PDF</button>
         </div>
-      </label>
-      <div class="aplicar">
-        <button id="btn-aplicar-filtros" class="btn-primary">Aplicar Filtros</button>
-      </div>
-    </div>
-  </section>
+      </header>
 
-  <!-- Tabela -->
-  <section class="card tabela-container">
-    <table>
-      <thead>
-        <tr>
-          <th>ID</th>
-          <th>Data/Hora</th>
-          <th>Tipo</th>
-          <th>Material</th>
-          <th>Qtd</th>
-          <th>Usuário</th>
-          <th>Ações</th>
-        </tr>
-      </thead>
-      <tbody id="tabela-mov">
-        <!-- Preenchido via JS -->
-      </tbody>
-    </table>
-  </section>
+      <!-- Filtros -->
+      <section class="card filtros">
+        <div class="linha-filtros">
+          <label>Cliente:
+            <select><option>Todos</option></select>
+          </label>
+          <label>Unidade:
+            <select><option>Todos</option></select>
+          </label>
+          <label>Fornecedor:
+            <select><option>Todos</option></select>
+          </label>
+          <label>Material:
+            <input type="text" placeholder="Digite o material"/>
+          </label>
+        </div>
+        <div class="linha-filtros">
+          <label>Período:
+            <div class="periodo">
+              <input type="date"/> <span>a</span> <input type="date"/>
+            </div>
+          </label>
+          <div class="aplicar">
+            <button class="btn-primary">Aplicar Filtros</button>
+          </div>
+        </div>
+      </section>
 
-  <!-- Legenda -->
-  <section class="card legenda">
-    <h3>Legenda de Tipo</h3>
-    <ul>
-      <li><strong>IN</strong> → Entrada (Nota Fiscal, Devolução, Transferência)</li>
-      <li><strong>OUT</strong> → Saída (EPI, setor, projeto)</li>
-      <li><strong>AJUSTE</strong> → Ajustes de inventário (ganhos ou perdas)</li>
-    </ul>
-  </section>
+      <!-- Tabela -->
+      <section class="card tabela-container">
+        <table>
+          <thead>
+            <tr>
+              <th>#</th>
+              <th>Material</th>
+              <th>Fornecedor</th>
+              <th>Preço Unit.</th>
+              <th>Data NF</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><td>01</td><td>Capacete Seg.</td><td>Fornec. A</td><td>R$ 35,00</td><td>01/01/25</td></tr>
+            <tr><td>02</td><td>Capacete Seg.</td><td>Fornec. B</td><td>R$ 38,00</td><td>15/02/25</td></tr>
+            <tr><td>03</td><td>Capacete Seg.</td><td>Fornec. A</td><td>R$ 36,50</td><td>01/03/25</td></tr>
+          </tbody>
+        </table>
+      </section>
 
-  <!-- Ações rápidas -->
-  <section class="card exportacoes">
-    <h3>Ações rápidas:</h3>
-    <button class="btn-primary">Ver Detalhes</button>
-    <button class="btn-secondary">Exportar Excel</button>
-    <button class="btn-secondary">Exportar PDF</button>
-  </section>
-</main>
+      <!-- Gráficos -->
+      <section class="card graficos-container">
+        <div><h3>Evolução do Preço Unitário</h3><canvas id="graf-linha"></canvas></div>
+        <div><h3>Comparativo de Fornecedores</h3><canvas id="graf-barras"></canvas></div>
+        <div><h3>% Participação Fornecedores</h3><canvas id="graf-pizza"></canvas></div>
+      </section>
 
+      <!-- Indicadores -->
+      <section class="card indicadores">
+        <h3>Indicadores</h3>
+        <ul>
+          <li>📈 Variação no período: <strong>+4,2%</strong></li>
+          <li>💰 Menor preço: <strong>R$ 35,00 (Fornec. A)</strong></li>
+          <li>💰 Maior preço: <strong>R$ 38,00 (Fornec. B)</strong></li>
+          <li>📊 Média ponderada: <strong>R$ 36,20</strong></li>
+        </ul>
+      </section>
+    </main>
 
   </div>
   <script src="/js/base.js"></script>
-  <script src="/js/relatorios-mov.js"></script>
+  <script src="/js/relatorios-evolucao.js"></script>
+      <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
 </body>
 </html>

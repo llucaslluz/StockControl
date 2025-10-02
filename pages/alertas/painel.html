@@ -9,7 +9,7 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
   <link rel="icon" href="/assents/images/stock-control-www.png" type="image/png">
   <link rel="stylesheet" href="/css/base.css"/>
-  <link rel="stylesheet" href="/css/relatorios-mov.css"/>
+  <link rel="stylesheet" href="/css/alertas-painel.css"/>
 </head>
 <body>
   <div class="layout">
@@ -189,107 +189,95 @@
 
 
     <!-- Conteúdo -->
-<main class="content">
-  <header class="page-header">
-    <h1>Relatórios - Movimentações</h1>
-  </header>
-
-  <!-- Filtros -->
-  <section class="card filtros">
-    <div class="linha-filtros">
-      <label>Cliente:
-        <select id="filtro-cliente">
-          <option value="">Todos</option>
-          <option>Cliente 1</option>
-          <option>Cliente 2</option>
-        </select>
-      </label>
-      <label>Unidade:
-        <select id="filtro-unidade">
-          <option value="">Todas</option>
-          <option>Unidade 1</option>
-          <option>Unidade 2</option>
-        </select>
-      </label>
-      <label>Almoxarifado:
-        <select id="filtro-almox">
-          <option value="">Todos</option>
-          <option>Almox 1</option>
-          <option>Almox 2</option>
-        </select>
-      </label>
-      <label>Tipo:
-        <select id="filtro-tipo">
-          <option value="">Todos</option>
-          <option value="IN">IN (Entrada)</option>
-          <option value="OUT">OUT (Saída)</option>
-          <option value="AJUSTE">Ajuste</option>
-        </select>
-      </label>
-    </div>
-
-    <div class="linha-filtros">
-      <label>Material:
-        <input type="text" id="filtro-material" placeholder="Buscar material..."/>
-      </label>
-      <label>Funcionário:
-        <input type="text" id="filtro-funcionario" placeholder="Nome do funcionário..."/>
-      </label>
-      <label>Período:
-        <div class="periodo">
-          <input type="date" id="filtro-inicio"/> 
-          <span>a</span> 
-          <input type="date" id="filtro-fim"/>
+ <main class="content">
+      <header class="page-header">
+        <h1>Alertas - Painel</h1>
+        <div class="actions">
+          <button class="btn-secondary">Exportar CSV</button>
+          <button class="btn-secondary">Exportar XLSX</button>
+          <button class="btn-secondary">Exportar PDF</button>
         </div>
-      </label>
-      <div class="aplicar">
-        <button id="btn-aplicar-filtros" class="btn-primary">Aplicar Filtros</button>
-      </div>
-    </div>
-  </section>
+      </header>
 
-  <!-- Tabela -->
-  <section class="card tabela-container">
-    <table>
-      <thead>
-        <tr>
-          <th>ID</th>
-          <th>Data/Hora</th>
-          <th>Tipo</th>
-          <th>Material</th>
-          <th>Qtd</th>
-          <th>Usuário</th>
-          <th>Ações</th>
-        </tr>
-      </thead>
-      <tbody id="tabela-mov">
-        <!-- Preenchido via JS -->
-      </tbody>
-    </table>
-  </section>
+      <!-- Filtros -->
+      <section class="card filtros">
+        <div class="linha-filtros">
+          <label>Cliente:
+            <select><option>Todos</option></select>
+          </label>
+          <label>Unidade:
+            <select><option>Todas</option></select>
+          </label>
+          <label>Tipo:
+            <select>
+              <option>Todos</option>
+              <option>Estoque Mínimo</option>
+              <option>NF Divergência</option>
+              <option>EPI Vencido</option>
+              <option>Validade Lote</option>
+            </select>
+          </label>
+          <label>Status:
+            <select>
+              <option>Todos</option>
+              <option>Aberto</option>
+              <option>Reconhecido</option>
+              <option>Resolvido</option>
+            </select>
+          </label>
+          <label>Período:
+            <div class="periodo">
+              <input type="date"/> <span>a</span> <input type="date"/>
+            </div>
+          </label>
+          <div class="aplicar">
+            <button class="btn-primary">Aplicar Filtros</button>
+          </div>
+        </div>
+      </section>
 
-  <!-- Legenda -->
-  <section class="card legenda">
-    <h3>Legenda de Tipo</h3>
-    <ul>
-      <li><strong>IN</strong> → Entrada (Nota Fiscal, Devolução, Transferência)</li>
-      <li><strong>OUT</strong> → Saída (EPI, setor, projeto)</li>
-      <li><strong>AJUSTE</strong> → Ajustes de inventário (ganhos ou perdas)</li>
-    </ul>
-  </section>
+      <!-- Lista de Alertas -->
+      <section class="card tabela-container">
+        <table>
+          <thead>
+            <tr>
+              <th>ID</th>
+              <th>Tipo</th>
+              <th>Unidade</th>
+              <th>Data/Hora</th>
+              <th>Status</th>
+            </tr>
+          </thead>
+          <tbody id="tabela-alertas">
+            <!-- Preenchido via JS -->
+          </tbody>
+        </table>
+      </section>
 
-  <!-- Ações rápidas -->
-  <section class="card exportacoes">
-    <h3>Ações rápidas:</h3>
-    <button class="btn-primary">Ver Detalhes</button>
-    <button class="btn-secondary">Exportar Excel</button>
-    <button class="btn-secondary">Exportar PDF</button>
-  </section>
-</main>
+      <!-- Detalhes -->
+      <section class="card detalhe hidden" id="detalhe-alerta">
+        <h2>Detalhes do Alerta</h2>
+        <div id="detalhe-conteudo">
+          <p>Selecione um alerta para ver os detalhes.</p>
+        </div>
+        <div class="acoes">
+          <button class="btn-secondary">Atribuir a Usuário</button>
+          <button class="btn-primary">Marcar como Resolvido</button>
+          <button class="btn-secondary">Histórico</button>
+        </div>
+      </section>
 
-
+      <!-- Gráficos -->
+      <section class="card graficos-container">
+        <div><h3>% Alertas por Status</h3><canvas id="graf-pizza"></canvas></div>
+        <div><h3>Alertas por Tipo</h3><canvas id="graf-barra"></canvas></div>
+        <div><h3>Evolução (30 dias)</h3><canvas id="graf-linha"></canvas></div>
+      </section>
+    </main>
   </div>
+  <script src="/js/alertas-painel.js"></script>
   <script src="/js/base.js"></script>
-  <script src="/js/relatorios-mov.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
 </body>
 </html>

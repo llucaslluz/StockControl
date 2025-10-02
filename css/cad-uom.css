@@ -1,0 +1,36 @@
+.page-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 15px;
+}
+.page-header h1 { font-size: 1.5rem; color: #1e293b; }
+.actions button { margin-left: 10px; }
+
+.card {
+  background: var(--panel);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 18px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+  margin-bottom: 20px;
+}
+
+/* Formulário */
+.formulario { margin-top: 10px; }
+.grid-form {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 15px;
+}
+.acoes { margin-top: 15px; display: flex; gap: 10px; }
+
+/* Tabela */
+.tabela-container { overflow: auto; }
+table { width: 100%; border-collapse: collapse; }
+th, td {
+  border-bottom: 1px solid var(--border);
+  padding: 10px;
+}
+th { background: #f3f4f6; }
+tr:hover { background: #f9fafb; cursor: pointer; }

@@ -1,0 +1,106 @@
+/* ==============================
+   Inventário - Planos
+============================== */
+
+/* Cabeçalho */
+.page-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 15px;
+}
+.page-header h1 { font-size: 1.5rem; color: #1e293b; }
+.actions button { margin-left: 10px; }
+
+/* Card */
+.card {
+  background: var(--panel);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 18px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+  margin-bottom: 20px;
+}
+
+/* Filtros */
+.filtros {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+.linha-filtros {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 15px;
+  align-items: end;
+}
+.filtros label {
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: #374151;
+  display: flex;
+  flex-direction: column;
+}
+.filtros select {
+  padding: 8px;
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  font-size: 0.9rem;
+  margin-top: 5px;
+}
+.aplicar { display: flex; justify-content: flex-end; }
+
+/* Botões */
+.btn-primary {
+  background: var(--accent);
+  color: #fff;
+  font-weight: 600;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background 0.2s var(--ease), transform 0.1s ease-in-out;
+}
+.btn-primary:hover { background: #2563eb; }
+.btn-primary:active { transform: translateY(1px); }
+
+.btn-secondary {
+  background: #e5e7eb;
+  color: #374151;
+  border: none;
+  padding: 8px 14px;
+  border-radius: 6px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.2s var(--ease);
+}
+.btn-secondary:hover { background: #d1d5db; }
+
+/* Tabela */
+.tabela-container { overflow: auto; }
+table { width: 100%; border-collapse: collapse; }
+th, td {
+  border-bottom: 1px solid var(--border);
+  padding: 10px;
+  text-align: left;
+}
+th { background: #f3f4f6; }
+tr:hover { background: #f9fafb; cursor: pointer; }
+
+/* Status colorido */
+.status { font-weight: 700; }
+.status.Aberto       { color: #2563eb; }   /* azul */
+.status.EmAndamento  { color: #d97706; }   /* laranja */
+.status.Fechado      { color: #059669; }   /* verde */
+
+/* Legenda */
+.legenda h2 {
+  font-size: 1.1rem;
+  margin-bottom: 8px;
+  color: #1e293b;
+}
+.legenda ul {
+  padding-left: 20px;
+  font-size: 0.9rem;
+  color: #374151;
+}

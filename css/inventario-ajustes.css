@@ -1,0 +1,65 @@
+.page-header {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-bottom: 15px;
+}
+.page-header h1 {
+  font-size: 1.5rem;
+  color: #1e293b;
+}
+.status-info {
+  display: flex;
+  gap: 20px;
+  font-size: 0.95rem;
+  color: #374151;
+}
+
+.card {
+  background: var(--panel);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 18px;
+  box-shadow: 0 2px 6px rgba(0,0,0,.05);
+  margin-bottom: 20px;
+}
+
+.resumo {
+  display: flex;
+  gap: 40px;
+  font-size: 0.95rem;
+}
+
+/* Tabela */
+.tabela-container { overflow: auto; }
+table { width: 100%; border-collapse: collapse; }
+th, td {
+  border-bottom: 1px solid var(--border);
+  padding: 10px;
+  text-align: left;
+}
+th { background: #f3f4f6; }
+
+tr:hover { background: #f9fafb; cursor: pointer; }
+
+/* Status cores (se usar no futuro) */
+.status.OK { color: #059669; font-weight: 700; }
+.status.Rejeitado { color: #dc2626; font-weight: 700; }
+
+/* Ações rápidas */
+.acoes-rapidas {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+.acoes-rapidas input {
+  padding: 8px;
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  font-size: 0.9rem;
+}
+.acoes-rapidas .botoes {
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+}
