@@ -188,18 +188,74 @@
 
 
     <!-- Conteúdo -->
-    <main class="content">
-      <h1>Título da Tela</h1>
-      <div class="toolbar">
-        <button class="btn btn-primary">Ação Primária</button>
-        <button class="btn">Ação Secundária</button>
-      </div>
-      <div class="card">
-        <p>Coloque aqui os cards / tabelas / gráficos / formulários da página.</p>
-      </div>
-    </main>
+ <main class="content">
+      <header class="page-header">
+        <h1>Cadastros - Almoxarifados</h1>
+        <div class="actions">
+          <button id="btn-novo" class="btn-primary">+ Novo Almoxarifado</button>
+        </div>
+      </header>
 
+      <!-- Formulário -->
+      <section class="card formulario hidden" id="form-almox">
+        <h2>Novo Almoxarifado</h2>
+        <div class="grid-form">
+          <label>Nome:
+            <input type="text" id="nome"/>
+          </label>
+          <label>Código:
+            <input type="text" id="codigo"/>
+          </label>
+          <label>Unidade:
+            <select id="unidade">
+              <option>Pirituba</option>
+              <option>Cubatão</option>
+              <option>Mauá</option>
+            </select>
+          </label>
+          <label>Endereço (opcional):
+            <input type="text" id="endereco"/>
+          </label>
+          <label>Responsável:
+            <input type="text" id="responsavel"/>
+          </label>
+          <label>Status:
+            <select id="status">
+              <option>Ativo</option>
+              <option>Inativo</option>
+            </select>
+          </label>
+          <label>Observações:
+            <textarea id="observacoes"></textarea>
+          </label>
+        </div>
+        <div class="acoes">
+          <button class="btn-primary" id="btn-salvar">Salvar</button>
+          <button class="btn-secondary" id="btn-cancelar">Cancelar</button>
+        </div>
+      </section>
+
+      <!-- Lista -->
+      <section class="card tabela-container">
+        <h2>Lista de Almoxarifados</h2>
+        <table>
+          <thead>
+            <tr>
+              <th>ID</th>
+              <th>Nome</th>
+              <th>Código</th>
+              <th>Unidade</th>
+              <th>Status</th>
+              <th>Ações</th>
+            </tr>
+          </thead>
+          <tbody id="tabela-almox"></tbody>
+        </table>
+      </section>
+    </main>
   </div>
+  
+  <script src="/js/cad-almoxarifados.js"></script>
   <script src="/js/base.js"></script>
 </body>
 </html>
