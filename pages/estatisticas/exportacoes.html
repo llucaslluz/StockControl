@@ -3,12 +3,13 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Stock Control</title>
+  <title>Stock Control - Exportações</title>
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
   <link rel="icon" href="/assents/images/stock-control-www.png" type="image/png">
   <link rel="stylesheet" href="/css/base.css"/>
+  <link rel="stylesheet" href="/css/estatisticas-exportacoes.css"/>
 </head>
 <body>
   <div class="layout">
@@ -188,18 +189,71 @@
 
 
     <!-- Conteúdo -->
-    <main class="content">
-      <h1>Título da Tela</h1>
-      <div class="toolbar">
-        <button class="btn btn-primary">Ação Primária</button>
-        <button class="btn">Ação Secundária</button>
-      </div>
-      <div class="card">
-        <p>Coloque aqui os cards / tabelas / gráficos / formulários da página.</p>
-      </div>
-    </main>
+ <main class="content">
+      <header class="page-header">
+        <h1>Estatísticas - Exportações</h1>
+      </header>
 
+      <!-- Filtros -->
+      <section class="card filtros">
+        <div class="linha-filtros">
+          <label>Cliente:
+            <select><option>Todos</option></select>
+          </label>
+          <label>Unidade:
+            <select><option>Todas</option></select>
+          </label>
+          <label>Período:
+            <div class="periodo">
+              <input type="date"/> <span>a</span> <input type="date"/>
+            </div>
+          </label>
+        </div>
+        <div class="linha-filtros">
+          <label>Tipo de Relatório:
+            <select>
+              <option>Consumo</option>
+              <option>Estoque</option>
+              <option>Movimentações</option>
+              <option>EPIs</option>
+            </select>
+          </label>
+          <label>Formato:
+            <select>
+              <option>CSV</option>
+              <option>XLSX</option>
+              <option>PDF</option>
+            </select>
+          </label>
+          <div class="aplicar">
+            <button class="btn-primary">Gerar Exportação</button>
+          </div>
+        </div>
+      </section>
+
+      <!-- Histórico -->
+      <section class="card tabela-container">
+        <h3>Histórico de Exportações</h3>
+        <table>
+          <thead>
+            <tr>
+              <th>ID</th>
+              <th>Relatório</th>
+              <th>Período</th>
+              <th>Formato</th>
+              <th>Status</th>
+              <th>Ações</th>
+            </tr>
+          </thead>
+          <tbody id="tabela-exportacoes">
+            <!-- Preenchido via JS -->
+          </tbody>
+        </table>
+      </section>
+    </main>
   </div>
+
   <script src="/js/base.js"></script>
+  <script src="/js/estatisticas-exportacoes.js"></script>
 </body>
 </html>

@@ -9,6 +9,7 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
   <link rel="icon" href="/assents/images/stock-control-www.png" type="image/png">
   <link rel="stylesheet" href="/css/base.css"/>
+  <link rel="stylesheet" href="/css/estatisticas-graficos.css"/>
 </head>
 <body>
   <div class="layout">
@@ -189,17 +190,21 @@
 
     <!-- Conteúdo -->
     <main class="content">
-      <h1>Título da Tela</h1>
-      <div class="toolbar">
-        <button class="btn btn-primary">Ação Primária</button>
-        <button class="btn">Ação Secundária</button>
-      </div>
-      <div class="card">
-        <p>Coloque aqui os cards / tabelas / gráficos / formulários da página.</p>
-      </div>
-    </main>
+      <header class="page-header">
+        <h1>Estatísticas - Gráficos</h1>
+      </header>
 
+      <section class="card graficos-container">
+        <div><h3>Distribuição de Consumo por Categoria</h3><canvas id="graf-pizza"></canvas></div>
+        <div><h3>Evolução de Movimentações (6 meses)</h3><canvas id="graf-linha"></canvas></div>
+        <div><h3>Top 5 Materiais Mais Consumidos</h3><canvas id="graf-barra"></canvas></div>
+        <div><h3>Radar de Indicadores</h3><canvas id="graf-radar"></canvas></div>
+      </section>
+    </main>
   </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
   <script src="/js/base.js"></script>
+  <script src="/js/estatisticas-graficos.js"></script>
 </body>
 </html>
