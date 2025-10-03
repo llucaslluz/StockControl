@@ -9,6 +9,7 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
   <link rel="icon" href="/assents/images/stock-control-www.png" type="image/png">
   <link rel="stylesheet" href="/css/base.css"/>
+  <link rel="stylesheet" href="/css/cad-localizacoes.css"/>
 </head>
 <body>
   <div class="layout">
@@ -188,18 +189,77 @@
 
 
     <!-- Conteúdo -->
-    <main class="content">
-      <h1>Título da Tela</h1>
-      <div class="toolbar">
-        <button class="btn btn-primary">Ação Primária</button>
-        <button class="btn">Ação Secundária</button>
-      </div>
-      <div class="card">
-        <p>Coloque aqui os cards / tabelas / gráficos / formulários da página.</p>
-      </div>
-    </main>
+ <main class="content">
+      <header class="page-header">
+        <h1>Cadastros - Localizações</h1>
+        <div class="actions">
+          <button id="btn-novo" class="btn-primary">+ Nova Localização</button>
+        </div>
+      </header>
 
+      <!-- Formulário -->
+      <section class="card formulario hidden" id="form-local">
+        <h2>Nova Localização</h2>
+        <div class="grid-form">
+          <label>Código:
+            <input type="text" id="codigo"/>
+          </label>
+          <label>Descrição:
+            <input type="text" id="descricao"/>
+          </label>
+          <label>Almoxarifado:
+            <select id="almoxarifado">
+              <option>Almox Central</option>
+              <option>Almox Obra X</option>
+            </select>
+          </label>
+          <label>Capacidade:
+            <input type="text" id="capacidade" placeholder="Opcional"/>
+          </label>
+          <label>Status:
+            <select id="status">
+              <option>Ativo</option>
+              <option>Inativo</option>
+            </select>
+          </label>
+          <label>Observações:
+            <textarea id="observacoes"></textarea>
+          </label>
+        </div>
+        <div class="acoes">
+          <button class="btn-primary" id="btn-salvar">Salvar</button>
+          <button class="btn-secondary" id="btn-cancelar">Cancelar</button>
+        </div>
+      </section>
+
+      <!-- Lista -->
+      <section class="card tabela-container">
+        <h2>Lista de Localizações</h2>
+        <table>
+          <thead>
+            <tr>
+              <th>ID</th>
+              <th>Código</th>
+              <th>Descrição</th>
+              <th>Almoxarifado</th>
+              <th>Status</th>
+              <th>Ações</th>
+            </tr>
+          </thead>
+          <tbody id="tabela-local"></tbody>
+        </table>
+      </section>
+
+      <!-- Árvore -->
+      <section class="card">
+        <h2>Visualização Hierárquica</h2>
+        <ul id="arvore-local">
+          <!-- Preenchido via JS -->
+        </ul>
+      </section>
+    </main>
   </div>
+  <script src="/js/cad-localizacoes.js"></script>
   <script src="/js/base.js"></script>
 </body>
 </html>
