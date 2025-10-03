@@ -9,7 +9,7 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
   <link rel="icon" href="/assents/images/stock-control-www.png" type="image/png">
   <link rel="stylesheet" href="/css/base.css"/>
-  <link rel="stylesheet" href="/css/perfil.css"/>
+  <link rel="stylesheet" href="/css/configuracoes.css"/>
 </head>
 <body>
   <div class="layout">
@@ -189,59 +189,12 @@
 
 
     <!-- Conteúdo -->
-    <main class="content">
-      <!-- Dados Pessoais -->
+<main class="content">
+      
+      <!-- Preferências de Interface -->
       <section class="card">
-        <h2>Dados Pessoais</h2>
-        <div class="dados-grid">
-          <label>Nome: <input type="text" id="nome" value="João Silva" disabled></label>
-          <label>E-mail/Login: <input type="email" id="email" value="joao@empresa.com" disabled></label>
-          <label>Matrícula: <input type="text" id="matricula" value="12345" disabled></label>
-          <label>Função: <input type="text" id="funcao" value="Técnico de Manutenção" disabled></label>
-          <label>Unidade: <input type="text" id="unidade" value="Pirituba" disabled></label>
-          <label>Setor: <input type="text" id="setor" value="Produção" disabled></label>
-          <label>Telefone: <input type="text" id="telefone" value="(11) 98765-4321" disabled></label>
-          <label>Data Admissão: <input type="date" id="admissao" value="2022-02-01" disabled></label>
-        </div>
-        <button id="btn-editar" class="btn-primary">Editar Dados</button>
-      </section>
-
-      <!-- Segurança -->
-      <section class="card">
-        <h2>Segurança</h2>
-        <label>Alterar Senha:
-          <input type="password" id="senha" placeholder="Nova senha">
-        </label>
-        <label>2FA (Autenticação em Duas Etapas):
-          <select id="doisfa">
-            <option>Desativado</option>
-            <option selected>Ativo</option>
-          </select>
-        </label>
-        <button id="btn-seguranca" class="btn-primary">Atualizar Segurança</button>
-      </section>
-
-      <!-- Histórico de EPIs -->
-      <section class="card">
-        <h2>Histórico de EPIs Recebidos</h2>
-        <table class="tabela">
-          <thead>
-            <tr>
-              <th>ID</th><th>EPI</th><th>Data Entrega</th><th>Validade</th><th>Status</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr><td>01</td><td>Capacete Seg.</td><td>01/03/2023</td><td>01/03/2025</td><td>Válido</td></tr>
-            <tr><td>02</td><td>Luva Nitril.</td><td>01/02/2025</td><td>01/03/2025</td><td>Vencendo</td></tr>
-            <tr><td>03</td><td>Óculos Prot.</td><td>10/01/2025</td><td>10/07/2025</td><td>Válido</td></tr>
-          </tbody>
-        </table>
-      </section>
-
-      <!-- Preferências -->
-      <section class="card">
-        <h2>Preferências</h2>
-        <label>Tema:
+        <h2>Interface</h2>
+        <label>Tema Visual:
           <select id="tema">
             <option>Claro</option>
             <option selected>Escuro</option>
@@ -253,15 +206,66 @@
             <option>Inglês</option>
           </select>
         </label>
-        <label>
-          <input type="checkbox" id="notif" checked> Notificações por e-mail
+        <label>Fuso Horário:
+          <select id="fuso">
+            <option value="GMT-3">GMT-3 (Brasília)</option>
+            <option value="GMT-4">GMT-4</option>
+            <option value="GMT-5">GMT-5</option>
+          </select>
         </label>
-        <button id="btn-preferencias" class="btn-primary">Salvar Preferências</button>
+        <button class="btn-primary" id="btn-interface">Salvar</button>
       </section>
+
+      <!-- Notificações -->
+      <section class="card">
+        <h2>Notificações</h2>
+        <label><input type="checkbox" id="notif-email" checked> Receber notificações por e-mail</label>
+        <label><input type="checkbox" id="notif-alertas" checked> Notificar alertas críticos</label>
+        <label>Antecedência para avisar EPIs vencendo:
+          <select id="aviso-epi">
+            <option>15 dias</option>
+            <option selected>30 dias</option>
+            <option>60 dias</option>
+          </select>
+        </label>
+        <button class="btn-primary" id="btn-notif">Salvar</button>
+      </section>
+
+      <!-- Segurança -->
+      <section class="card">
+        <h2>Segurança</h2>
+        <label>Política de Senha:
+          <input type="text" value="Mínimo 8 caracteres, incluir nº e símbolo" disabled>
+        </label>
+        <label>Autenticação em Duas Etapas (2FA):
+          <select id="doisfa">
+            <option>Desativado</option>
+            <option selected>Ativado</option>
+          </select>
+        </label>
+        <label>Expiração de Sessão:
+          <select id="exp-sessao">
+            <option>15 min</option>
+            <option selected>30 min</option>
+            <option>60 min</option>
+          </select>
+        </label>
+        <button class="btn-primary" id="btn-seguranca">Salvar</button>
+      </section>
+
+      <!-- Integrações -->
+      <section class="card">
+        <h2>Integrações</h2>
+        <label>API Key ERP:
+          <input type="text" id="api-key" placeholder="Cole aqui sua chave de integração">
+        </label>
+        <label><input type="checkbox" id="nf-xml"> Importação de NF XML (piloto)</label>
+        <button class="btn-primary" id="btn-integracoes">Salvar</button>
+      </section>
+
     </main>
   </div>
-  
-  <script src="/js/perfil.js"></script>
+  <script src="/js/configuracoes.js"></script>
   <script src="/js/base.js"></script>
 </body>
 </html>

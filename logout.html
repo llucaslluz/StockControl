@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Sair - Stock Control</title>
+  <link rel="stylesheet" href="/css/base.css"/>
+  <link rel="stylesheet" href="/css/sair.css"/>
+  <link rel="icon" href="/assents/images/stock-control-www.png" type="image/png">
+</head>
+<body>
+  <div class="layout logout-layout">
+
+    <!-- Modal de Confirmação -->
+    <div class="logout-card">
+      <h2>⚠️ Deseja realmente sair?</h2>
+      <p>Sua sessão será encerrada e você precisará fazer login novamente.</p>
+      <div class="actions">
+        <button class="btn-secondary" id="cancelar">Cancelar</button>
+        <button class="btn-danger" id="confirmar">Sair</button>
+      </div>
+    </div>
+
+  </div>
+<!-- Popup de Logout -->
+<div class="popup-logout" id="popup-logout">
+  <p>⚠️ Deseja realmente sair?</p>
+  <div class="popup-actions">
+    <button class="btn-secondary" id="popup-nao">Não</button>
+    <button class="btn-danger" id="popup-sim">Sim</button>
+  </div>
+</div>
+
+
+  <script src="/js/sair.js"></script>
+</body>
+</html>
