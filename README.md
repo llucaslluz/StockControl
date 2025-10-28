@@ -1,5 +1,9 @@
 # 📦 Stock Control
 
+- Site: https://www.stockcontrol.com.br/
+- Login: Lucas
+- 1234
+
 ## 🔎 Visão Geral
 O **Stock Control** é um sistema de gestão de estoques, notas fiscais, EPIs e processos de almoxarifado para empresas multiunidade.  
 Permite controle operacional em nível de unidade e visão estratégica corporativa, com dashboards, relatórios e gestão de cadastros.
